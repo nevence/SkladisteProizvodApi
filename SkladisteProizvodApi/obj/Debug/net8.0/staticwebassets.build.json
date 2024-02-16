@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "7eUon+MLB7o/fl/BXx6AEGTRsNOlzjrVXQ6k4I8nckQ=",
+  "Hash": "ue/5VosrEiweCy83BKgE6cnbjYsSnWD/8VvhUeKuDZw=",
   "Source": "SkladisteProizvodApi",
   "BasePath": "_content/SkladisteProizvodApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "SkladisteProizvodApi\\wwwroot",
+      "Source": "SkladisteProizvodApi",
+      "ContentRoot": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\SkladisteProizvodApi\\wwwroot\\",
+      "BasePath": "_content/SkladisteProizvodApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\SkladisteProizvodApi\\wwwroot\\images\\placeholder.png",
+      "SourceId": "SkladisteProizvodApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\SkladisteProizvodApi\\wwwroot\\",
+      "BasePath": "_content/SkladisteProizvodApi",
+      "RelativePath": "images/placeholder.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\placeholder.png"
+    }
+  ]
 }

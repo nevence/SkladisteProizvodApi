@@ -1,0 +1,16 @@
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Repository.deps.json
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Repository.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Repository.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Entities.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Entities.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.csproj.CopyComplete
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\refint\Repository.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\ref\Repository.dll

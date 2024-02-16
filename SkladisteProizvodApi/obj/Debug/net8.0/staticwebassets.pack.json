@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\SkladisteProizvodApi\\wwwroot\\images\\placeholder.png",
+      "PackagePath": "staticwebassets\\images\\placeholder.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SkladisteProizvodApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SkladisteProizvodApi.props",
+      "PackagePath": "build\\SkladisteProizvodApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SkladisteProizvodApi.props",
+      "PackagePath": "buildMultiTargeting\\SkladisteProizvodApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SkladisteProizvodApi.props",
+      "PackagePath": "buildTransitive\\SkladisteProizvodApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
