@@ -14,3 +14,5 @@ C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\obj\Debug\net
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\obj\Debug\net8.0\LoggerService.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\obj\Debug\net8.0\ref\LoggerService.dll
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\obj\Debug\net8.0\LoggerService.sourcelink.json
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\bin\Debug\net8.0\Entities.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\LoggerService\bin\Debug\net8.0\Entities.pdb

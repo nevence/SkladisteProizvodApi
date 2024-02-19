@@ -14,3 +14,5 @@ C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\refint\Repository.dll
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\Repository.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\obj\Debug\net8.0\ref\Repository.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Contracts.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\bin\Debug\net8.0\Contracts.pdb

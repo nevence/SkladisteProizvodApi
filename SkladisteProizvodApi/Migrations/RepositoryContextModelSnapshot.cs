@@ -47,14 +47,27 @@ namespace SkladisteProizvodApi.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("SkladisteId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SkladisteId");
-
                     b.ToTable("Proizvodi");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                            Cena = 128000,
+                            ImageURL = "/images/placeholder.png",
+                            Kategorija = "Mobilni telefon",
+                            Naziv = "Samsung Galaxy S24"
+                        },
+                        new
+                        {
+                            Id = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
+                            Cena = 88000,
+                            ImageURL = "/images/placeholder.png",
+                            Kategorija = "Mobilni telefon",
+                            Naziv = "Xiaomi Note 13 Pro"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Skladiste", b =>
@@ -84,6 +97,24 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skladista");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
+                            Adresa = "Knjazevacka 16",
+                            Kapacitet = 5000,
+                            Naziv = "Gigatron Nis",
+                            Popunjeno = 50
+                        },
+                        new
+                        {
+                            Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
+                            Adresa = "Nikole Pasica 10",
+                            Kapacitet = 4200,
+                            Naziv = "Gigatron Kragujevac",
+                            Popunjeno = 0
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.SkladisteProizvod", b =>
@@ -108,13 +139,15 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasIndex("SkladisteId");
 
                     b.ToTable("SkladisteProizvodi");
-                });
 
-            modelBuilder.Entity("Entities.Models.Proizvod", b =>
-                {
-                    b.HasOne("Entities.Models.Skladiste", null)
-                        .WithMany("Proizvodi")
-                        .HasForeignKey("SkladisteId");
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("5156b79f-5ba3-4734-b30f-7592c231c432"),
+                            Kolicina = 50,
+                            ProizvodId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
+                            SkladisteId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a")
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.SkladisteProizvod", b =>
@@ -134,11 +167,6 @@ namespace SkladisteProizvodApi.Migrations
                     b.Navigation("Proizvod");
 
                     b.Navigation("Skladiste");
-                });
-
-            modelBuilder.Entity("Entities.Models.Skladiste", b =>
-                {
-                    b.Navigation("Proizvodi");
                 });
 #pragma warning restore 612, 618
         }

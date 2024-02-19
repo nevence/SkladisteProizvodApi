@@ -1,0 +1,12 @@
+2024-02-19 15:54:38.6290 ERROR Doslo je do greske u GetAllSkladista service metodi System.NullReferenceException: Object reference not set to an instance of an object.
+   at Repository.RepositoryBase`1.FindAll(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\RepositoryBase.cs:line 29
+   at Repository.SkladisteRepository.GetAllSkladista(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\SkladisteRepository.cs:line 18
+   at Service.SkladisteService.GetAllSkladista(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Service\SkladisteService.cs:line 28
+2024-02-19 15:59:37.0663 ERROR Doslo je do greske u GetAllSkladista service metodi System.NullReferenceException: Object reference not set to an instance of an object.
+   at Repository.RepositoryBase`1.FindAll(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\RepositoryBase.cs:line 29
+   at Repository.SkladisteRepository.GetAllSkladista(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Repository\SkladisteRepository.cs:line 18
+   at Service.SkladisteService.GetAllSkladista(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Service\SkladisteService.cs:line 28
+2024-02-19 16:07:48.0267 ERROR Doslo je do greske u GetAllSkladista service metodi System.NullReferenceException: Object reference not set to an instance of an object.
+   at Repository.RepositoryBase`1.FindAll(Boolean trackChanges)
+   at Repository.SkladisteRepository.GetAllSkladista(Boolean trackChanges)
+   at Service.SkladisteService.GetAllSkladista(Boolean trackChanges) in C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\Service\SkladisteService.cs:line 28

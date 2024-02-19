@@ -26,7 +26,5 @@ namespace Entities.Models
 
         public int Popunjeno { get; set; } = 0;
 
-        public ICollection<Proizvod>? Proizvodi {  get; set; }
-
     }
 }

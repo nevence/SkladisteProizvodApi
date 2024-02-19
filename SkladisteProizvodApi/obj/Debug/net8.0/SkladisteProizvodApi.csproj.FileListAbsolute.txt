@@ -142,3 +142,10 @@ C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\De
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Repository.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Entities.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\obj\Debug\net8.0\SkladisteProizvodApi.sourcelink.json
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.Contracts.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\SkladisteProizvodApi.Presentation.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.Contracts.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\SkladisteProizvodApi.Presentation.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\obj\Debug\net8.0\SkladisteProizvodApi.MvcApplicationPartsAssemblyInfo.cs
