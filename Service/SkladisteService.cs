@@ -1,7 +1,10 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Repository;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +17,30 @@ namespace Service
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
+        private readonly IMapper _mapper;
 
-        public SkladisteService(IRepositoryManager repository, ILoggerManager logger)
+        public SkladisteService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Skladiste> GetAllSkladista(bool trackChanges)
+        public IEnumerable<SkladisteDto> GetAllSkladista(bool trackChanges)
         {
-            try
-            {
-                var skladista = _repository.Skladiste.GetAllSkladista(trackChanges);
-                return skladista;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Doslo je do greske u {nameof(GetAllSkladista)} service metodi {ex}");
-                throw;
-            }
+
+            var skladista = _repository.Skladiste.GetAllSkladista(trackChanges);
+            var skladistaDto = _mapper.Map<IEnumerable<SkladisteDto>>(skladista);
+            return skladistaDto;
+        }
+
+        public SkladisteDto GetSkladista(Guid skladisteId, bool trackChanges) 
+        { 
+            var skladiste = _repository.Skladiste.GetSkladiste(skladisteId, trackChanges);
+            if (skladiste is null)
+                throw new SkladisteNotFoundException(skladisteId);
+            var skladisteDto = _mapper.Map<SkladisteDto>(skladiste);
+            return skladisteDto;
         }
     }
 }

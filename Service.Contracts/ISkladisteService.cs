@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Service.Contracts
 {
     public interface ISkladisteService
     {
-        IEnumerable<Skladiste> GetAllSkladista(bool trackChanges);
+        IEnumerable<SkladisteDto> GetAllSkladista(bool trackChanges);
+        SkladisteDto GetSkladista(Guid skladisteId, bool trackChanges);
     }
 }

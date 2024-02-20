@@ -16,6 +16,9 @@ namespace Repository
 
         public IEnumerable<Skladiste> GetAllSkladista(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(s => s.Naziv).ToList();
+
+        public Skladiste GetSkladiste(Guid skladisteId, bool trackChanges) =>
+            FindByCondition(s => s.Id.Equals(skladisteId), trackChanges).SingleOrDefault();
         
     }
 }

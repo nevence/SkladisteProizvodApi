@@ -10,5 +10,6 @@ namespace Contracts
     public interface ISkladisteRepository
     {
         IEnumerable<Skladiste> GetAllSkladista(bool trackChanges);
+        Skladiste GetSkladiste(Guid Id, bool trackChanges);
     }
 }

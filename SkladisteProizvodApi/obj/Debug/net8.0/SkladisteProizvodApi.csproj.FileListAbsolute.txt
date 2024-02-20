@@ -148,4 +148,8 @@ C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\De
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.Contracts.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Service.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\SkladisteProizvodApi.Presentation.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Shared.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\Shared.pdb
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi\obj\Debug\net8.0\SkladisteProizvodApi.MvcApplicationPartsAssemblyInfo.cs

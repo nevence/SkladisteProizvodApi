@@ -1,0 +1,15 @@
+﻿using AutoMapper;
+using Entities.Models;
+using Shared.DataTransferObjects;
+
+namespace SkladisteProizvodApi
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile() {
+            CreateMap<Skladiste, SkladisteDto>()
+                .ForCtorParam("NazivAdresa",
+                opt => opt.MapFrom(x => string.Join(' ', x.Naziv, x.Adresa)));
+        }
+    }
+}

@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AJGT1x3cf18KxSZjCPMNjUVVVrNQCuirw8TkxbXNNTkywiWCG4ZFgb313JT6+iCcbdW5/IlXy3Brw2lIAbPCcg==",
+  "dgSpecHash": "MhrJVKe/0rq38EtsM4jmq4njW3+acfoGOWUp+Ia9Ha7fVPeG0tEmRLb0tGJok7bssUCr+UvFORpPvmZjRXQw7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Service\\Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\neven\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\neven\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\neven\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\neven\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.2\\microsoft.entityframeworkcore.8.0.2.nupkg.sha512",
     "C:\\Users\\neven\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.2\\microsoft.entityframeworkcore.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\neven\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.2\\microsoft.entityframeworkcore.analyzers.8.0.2.nupkg.sha512",

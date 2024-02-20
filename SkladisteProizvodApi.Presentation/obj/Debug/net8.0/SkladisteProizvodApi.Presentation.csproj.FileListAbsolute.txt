@@ -16,3 +16,5 @@ C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presen
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presentation\obj\Debug\net8.0\refint\SkladisteProizvodApi.Presentation.dll
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presentation\obj\Debug\net8.0\SkladisteProizvodApi.Presentation.pdb
 C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presentation\obj\Debug\net8.0\ref\SkladisteProizvodApi.Presentation.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presentation\bin\Debug\net8.0\Shared.dll
+C:\Users\neven\Desktop\Projekti\SkladisteProizvodApi\SkladisteProizvodApi.Presentation\bin\Debug\net8.0\Shared.pdb
