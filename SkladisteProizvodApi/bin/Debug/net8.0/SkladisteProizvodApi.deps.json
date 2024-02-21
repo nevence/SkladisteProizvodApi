@@ -1070,7 +1070,8 @@
         "dependencies": {
           "Contracts": "1.0.0",
           "Entities": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "8.0.2"
+          "Microsoft.EntityFrameworkCore": "8.0.2",
+          "Shared": "1.0.0"
         },
         "runtime": {
           "Repository.dll": {}
@@ -1102,6 +1103,7 @@
       },
       "SkladisteProizvodApi.Presentation/1.0.0": {
         "dependencies": {
+          "Contracts": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Service.Contracts": "1.0.0"
         },

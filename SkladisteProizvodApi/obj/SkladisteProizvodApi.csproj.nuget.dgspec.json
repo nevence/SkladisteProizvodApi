@@ -232,6 +232,9 @@
               },
               "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Entities\\Entities.csproj": {
                 "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Entities\\Entities.csproj"
+              },
+              "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Shared\\Shared.csproj"
               }
             }
           }
@@ -500,6 +503,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Contracts\\Contracts.csproj"
+              },
               "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Service.Contracts\\Service.Contracts.csproj": {
                 "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Service.Contracts\\Service.Contracts.csproj"
               }

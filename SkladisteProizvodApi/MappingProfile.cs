@@ -10,6 +10,10 @@ namespace SkladisteProizvodApi
             CreateMap<Skladiste, SkladisteDto>()
                 .ForCtorParam("NazivAdresa",
                 opt => opt.MapFrom(x => string.Join(' ', x.Naziv, x.Adresa)));
+
+            CreateMap<SkladisteForCreationDto, Skladiste>();
+            CreateMap<Proizvod, ProizvodDto>();
+            CreateMap<ProizvodForCreationDto, Proizvod>();
         }
     }
 }
