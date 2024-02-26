@@ -34,6 +34,13 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return Ok(skladiste);
         }
 
+        [HttpGet("collectiom/({ids})", Name = "SkladistaCollection")]
+        public async Task<IActionResult> GetSkladistaCollection(IEnumerable<Guid> ids)
+        {
+            var skladista = await _service.SkladisteService.GetByIdsAsync(ids, trackChanges: false);
+            return Ok(skladista);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateSkladiste([FromBody] SkladisteForCreationDto skladiste)
         {
@@ -43,6 +50,13 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             var createdSkladiste = await _service.SkladisteService.CreateSkladisteAsync(skladiste);
 
             return CreatedAtRoute("SkladisteById", new { id = createdSkladiste.Id }, createdSkladiste);
+        }
+
+        [HttpPost("collection")]
+        public async Task<IActionResult> CreateSkladisteCollection([FromBody] IEnumerable<SkladisteForCreationDto> skladisteCollection)
+        {
+            var result = await _service.SkladisteService.CreateSkladisteCollectionAsync(skladisteCollection);
+            return CreatedAtRoute("SkladisteCollection", new {result.ids}, result.skladista);
         }
 
 

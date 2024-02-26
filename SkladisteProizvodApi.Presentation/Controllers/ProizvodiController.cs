@@ -35,6 +35,13 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return Ok(proizvod);
         }
 
+        [HttpGet("collection/({ids})", Name = "ProizvodiCollection")]
+        public async Task<IActionResult> GetProizvodiCollection(IEnumerable<Guid> ids)
+        {
+            var proizvodi = await _service.ProizvodService.GetByIdsAsync(ids, trackChanges: false);
+            return Ok(proizvodi);
+        }
+
         [HttpPost]
 
         public async Task<IActionResult> CreateProizvod([FromBody] ProizvodForCreationDto proizvod)
@@ -45,6 +52,14 @@ namespace SkladisteProizvodApi.Presentation.Controllers
 
             return CreatedAtRoute("ProizvodById", new { id = createdProizvod.Id }, createdProizvod);
         }
+
+        [HttpPost("collection")]
+        public async Task<IActionResult> CreateProizvodCollecton([FromBody] IEnumerable<ProizvodForCreationDto> proizvodCollection)
+        {
+            var result = await _service.ProizvodService.CreateProizvodCollectionAsync(proizvodCollection);
+            return CreatedAtRoute("ProizvodiCollection", new { result.ids }, result.proizvodi);
+        }
+
 
     }
 }

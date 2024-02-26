@@ -13,5 +13,7 @@ namespace Service.Contracts
         Task<ProizvodDto> GetProizvodAsync(Guid id, bool trackChanges);
         Task<ProizvodDto> CreateProizvodAsync(ProizvodForCreationDto proizvod);
         Task<IEnumerable<ProizvodDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
+        Task<(IEnumerable<ProizvodDto> proizvodi, string ids)> CreateProizvodCollectionAsync
+            (IEnumerable<ProizvodForCreationDto> proizvodCollection);
     }
 }

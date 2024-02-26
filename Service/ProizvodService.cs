@@ -34,6 +34,26 @@ namespace Service
             return proizvodToReturn;
         }
 
+        public async Task<(IEnumerable<ProizvodDto> proizvodi, string ids)> CreateProizvodCollectionAsync(IEnumerable<ProizvodForCreationDto> proizvodCollection)
+        {
+            if (proizvodCollection is null)
+            {
+                throw new ProizvodCollectionBadRequest();
+            }
+            var proizvodEntities = _mapper.Map<IEnumerable<Proizvod>>(proizvodCollection);
+            foreach(var proizvod in proizvodEntities)
+            {
+                _repository.Proizvod.CreateProizvod(proizvod);
+            }
+
+           await _repository.SaveAsync();
+
+            var proizvodCollectionToReturn = _mapper.Map<IEnumerable<ProizvodDto>>(proizvodEntities);
+            var ids = string.Join(",", proizvodCollectionToReturn.Select(p => p.Id));
+
+            return (proizvodi: proizvodCollectionToReturn, ids: ids);
+        }
+
         public async Task<IEnumerable<ProizvodDto>> GetAllProizvodiAsync(bool trackChanges)
         {
             var proizvodi = await _repository.Proizvod.GetAllProizvodiAsync(trackChanges);

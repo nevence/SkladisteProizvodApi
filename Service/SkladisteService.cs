@@ -52,5 +52,36 @@ namespace Service
             var skladisteToReturn = _mapper.Map<SkladisteDto>(skladisteEntity);
             return skladisteToReturn;
         }
+
+        public async Task<IEnumerable<SkladisteDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids == null) throw new IdParametersBadRequestException();
+
+            var skladista = await _repository.Skladiste.GetByIdsAsync(ids, trackChanges);    
+            if(ids.Count() != skladista.Count())
+                throw new CollectionByIdsBadRequestException();
+            var skladistaDto = _mapper.Map<IEnumerable<SkladisteDto>>(skladista);   
+            return skladistaDto;
+        }
+
+        public async Task<(IEnumerable<SkladisteDto> skladista, string ids)> CreateSkladisteCollectionAsync(IEnumerable<SkladisteForCreationDto> skladisteCollection)
+        {
+            if (skladisteCollection == null)
+                throw new SkladisteCollectionBadRequest();
+
+            var skladisteEntities = _mapper.Map<IEnumerable<Skladiste>>(skladisteCollection);
+            foreach(var skladste in skladisteEntities)
+            {
+                _repository.Skladiste.CreateSkladiste(skladste);
+            }
+
+            await _repository.SaveAsync();
+
+            var skladisteCollectionToReturn =
+                _mapper.Map<IEnumerable<SkladisteDto>>(skladisteEntities);
+            var ids = string.Join(",", skladisteCollectionToReturn.Select(s => s.Id));
+
+            return(skladista: skladisteCollectionToReturn, ids:ids);
+        }
     }
 }

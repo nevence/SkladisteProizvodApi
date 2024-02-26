@@ -14,5 +14,7 @@ namespace Service.Contracts
         Task<SkladisteDto> GetSkladistaAsync(Guid skladisteId, bool trackChanges);
         Task<SkladisteDto> CreateSkladisteAsync(SkladisteForCreationDto skladiste);
         Task<IEnumerable<SkladisteDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
+        Task<(IEnumerable<SkladisteDto> skladista, string ids)> CreateSkladisteCollectionAsync
+            (IEnumerable<SkladisteForCreationDto> skladisteCollection);
     }
 }

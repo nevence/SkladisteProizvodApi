@@ -18,14 +18,12 @@ namespace SkladisteProizvodApi.Extensions
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeature != null)
                     {
-                        if (contextFeature.Error is NotFoundException)
+                        context.Response.StatusCode = contextFeature.Error switch
                         {
-                            context.Response.StatusCode = StatusCodes.Status404NotFound;
-                        }
-                        else
-                        {
-                            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                        }
+                            NotFoundException => StatusCodes.Status404NotFound,
+                            BadRequestException => StatusCodes.Status400BadRequest,
+                            _ => StatusCodes.Status500InternalServerError
+                        };
                         logger.LogError($"Doslo je do greske: {contextFeature.Error}");
 
                         await context.Response.WriteAsync(new ErrorDetails()
