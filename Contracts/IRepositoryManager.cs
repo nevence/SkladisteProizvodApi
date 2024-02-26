@@ -11,6 +11,6 @@ namespace Contracts
         ISkladisteRepository Skladiste {  get; }
         IProizvodRepository Proizvod { get; }
         ISkladisteProizvodRepository SkladisteProizvod { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

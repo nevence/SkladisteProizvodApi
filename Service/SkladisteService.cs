@@ -26,21 +26,31 @@ namespace Service
             _mapper = mapper;
         }
 
-        public IEnumerable<SkladisteDto> GetAllSkladista(bool trackChanges)
+        public async Task<IEnumerable<SkladisteDto>> GetAllSkladistaAsync(bool trackChanges)
         {
 
-            var skladista = _repository.Skladiste.GetAllSkladista(trackChanges);
+            var skladista = await _repository.Skladiste.GetAllSkladistaAsync(trackChanges);
             var skladistaDto = _mapper.Map<IEnumerable<SkladisteDto>>(skladista);
             return skladistaDto;
         }
 
-        public SkladisteDto GetSkladista(Guid skladisteId, bool trackChanges) 
+        public async Task<SkladisteDto> GetSkladistaAsync(Guid skladisteId, bool trackChanges) 
         { 
-            var skladiste = _repository.Skladiste.GetSkladiste(skladisteId, trackChanges);
+            var skladiste =  await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges);
             if (skladiste is null)
                 throw new SkladisteNotFoundException(skladisteId);
             var skladisteDto = _mapper.Map<SkladisteDto>(skladiste);
             return skladisteDto;
+        }
+
+        public async Task<SkladisteDto> CreateSkladisteAsync(SkladisteForCreationDto skladiste)
+        {
+            var skladisteEntity = _mapper.Map<Skladiste>(skladiste);
+            _repository.Skladiste.CreateSkladiste(skladisteEntity);
+            await _repository.SaveAsync();
+
+            var skladisteToReturn = _mapper.Map<SkladisteDto>(skladisteEntity);
+            return skladisteToReturn;
         }
     }
 }

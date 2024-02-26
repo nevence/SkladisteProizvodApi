@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace Service.Contracts
 {
     public interface IProizvodService
     {
+        Task<IEnumerable<ProizvodDto>> GetAllProizvodiAsync(bool trackChanges);
+        Task<ProizvodDto> GetProizvodAsync(Guid id, bool trackChanges);
+        Task<ProizvodDto> CreateProizvodAsync(ProizvodForCreationDto proizvod);
+        Task<IEnumerable<ProizvodDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
     }
 }

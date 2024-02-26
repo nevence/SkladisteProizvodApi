@@ -9,7 +9,10 @@ namespace Contracts
 {
     public interface ISkladisteRepository
     {
-        IEnumerable<Skladiste> GetAllSkladista(bool trackChanges);
-        Skladiste GetSkladiste(Guid Id, bool trackChanges);
+        Task<IEnumerable<Skladiste>> GetAllSkladistaAsync(bool trackChanges);
+        Task<Skladiste> GetSkladisteAsync(Guid Id, bool trackChanges);
+        void CreateSkladiste(Skladiste skladiste);
+        Task<IEnumerable<Skladiste>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
+        
     }
 }

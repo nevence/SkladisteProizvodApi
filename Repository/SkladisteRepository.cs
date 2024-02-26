@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,17 @@ namespace Repository
         {
         }
 
-        public IEnumerable<Skladiste> GetAllSkladista(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(s => s.Naziv).ToList();
+        public async Task<IEnumerable<Skladiste>> GetAllSkladistaAsync(bool trackChanges) =>
+            await FindAll(trackChanges).OrderBy(s => s.Naziv).ToListAsync();
 
-        public Skladiste GetSkladiste(Guid skladisteId, bool trackChanges) =>
-            FindByCondition(s => s.Id.Equals(skladisteId), trackChanges).SingleOrDefault();
-        
+        public async Task<Skladiste> GetSkladisteAsync(Guid skladisteId, bool trackChanges) =>
+           await FindByCondition(s => s.Id.Equals(skladisteId), trackChanges).SingleOrDefaultAsync();
+
+        public void CreateSkladiste(Skladiste skladiste) => Create(skladiste);
+
+        public async Task<IEnumerable<Skladiste>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            return await FindByCondition(x=> ids.Contains(x.Id), trackChanges).ToListAsync();
+        }
     }
 }

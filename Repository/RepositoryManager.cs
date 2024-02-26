@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Repository
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
-            _skladisteProizvodRepository = new Lazy<ISkladisteProizvodRepository>(() => 
+            _skladisteProizvodRepository = new Lazy<ISkladisteProizvodRepository>(() =>
             new SkladisteProizvodRepository(repositoryContext));
             _skladisteRepository = new Lazy<ISkladisteRepository>(() => new SkladisteRepository(repositoryContext));
             _proizvodRepository = new Lazy<IProizvodRepository>(() => new ProizvodRepository(repositoryContext));
@@ -28,9 +29,10 @@ namespace Repository
 
         public ISkladisteProizvodRepository SkladisteProizvod => _skladisteProizvodRepository.Value;
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _repositoryContext.SaveChanges();
+           await _repositoryContext.SaveChangesAsync();
+
         }
     }
 }

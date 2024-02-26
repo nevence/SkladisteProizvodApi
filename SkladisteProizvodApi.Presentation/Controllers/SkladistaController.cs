@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
+using Shared.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,17 +21,30 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSkladista()
+        public async Task<IActionResult> GetSkladista()
         { 
-            var skladista = _service.SkladisteService.GetAllSkladista(trackChanges: false);
+            var skladista = await _service.SkladisteService.GetAllSkladistaAsync(trackChanges: false);
             return Ok(skladista);
         }
 
-        [HttpGet("{id:guid}")]
-        public IActionResult GetSkladiste(Guid id)
+        [HttpGet("{id:guid}", Name = "SkladisteById")]
+        public async Task<IActionResult> GetSkladiste(Guid id)
         {
-            var skladiste = _service.SkladisteService.GetSkladista(id, trackChanges: false);
+            var skladiste = await _service.SkladisteService.GetSkladistaAsync(id, trackChanges: false);
             return Ok(skladiste);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateSkladiste([FromBody] SkladisteForCreationDto skladiste)
+        {
+            if (skladiste is null)
+                return BadRequest("SkladisteForCreationDto objekat je null");
+
+            var createdSkladiste = await _service.SkladisteService.CreateSkladisteAsync(skladiste);
+
+            return CreatedAtRoute("SkladisteById", new { id = createdSkladiste.Id }, createdSkladiste);
+        }
+
+
     }
 }

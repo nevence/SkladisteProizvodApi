@@ -10,7 +10,9 @@ namespace Service.Contracts
 {
     public interface ISkladisteService
     {
-        IEnumerable<SkladisteDto> GetAllSkladista(bool trackChanges);
-        SkladisteDto GetSkladista(Guid skladisteId, bool trackChanges);
+        Task<IEnumerable<SkladisteDto>> GetAllSkladistaAsync(bool trackChanges);
+        Task<SkladisteDto> GetSkladistaAsync(Guid skladisteId, bool trackChanges);
+        Task<SkladisteDto> CreateSkladisteAsync(SkladisteForCreationDto skladiste);
+        Task<IEnumerable<SkladisteDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
     }
 }
