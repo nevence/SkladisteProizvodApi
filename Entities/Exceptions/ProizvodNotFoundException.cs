@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Exceptions
 {
-    public class ProizvodNotFoundException : Exception
+    public class ProizvodNotFoundException : NotFoundException
     {
         public ProizvodNotFoundException(Guid proizvodId)
             : base($"Proizvod sa id: {proizvodId} ne postoji u bazi podataka.")

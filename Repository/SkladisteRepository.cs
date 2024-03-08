@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,8 @@ namespace Repository
         {
             return await FindByCondition(x=> ids.Contains(x.Id), trackChanges).ToListAsync();
         }
+
+        public void DeleteSkladiste(Skladiste skladiste) => Delete(skladiste);  
+       
     }
 }

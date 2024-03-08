@@ -13,6 +13,6 @@ namespace Contracts
         Task<Proizvod> GetProizvodAsync(Guid Id, bool trackChanges);
         void CreateProizvod(Proizvod proizvod);
         Task<IEnumerable<Proizvod>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
-        
+        void DeleteProizvod(Proizvod proizvod);
     }
 }

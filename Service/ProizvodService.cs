@@ -54,6 +54,17 @@ namespace Service
             return (proizvodi: proizvodCollectionToReturn, ids: ids);
         }
 
+        public async Task DeleteProizvodAsync(Guid proizvodId, bool trackChanges)
+        {
+            var proizvod = await _repository.Proizvod.GetProizvodAsync(proizvodId, trackChanges);
+            if(proizvod == null)
+            {
+                throw new ProizvodNotFoundException(proizvodId);
+            }
+            _repository.Proizvod.DeleteProizvod(proizvod);
+            await _repository.SaveAsync();   
+        }
+
         public async Task<IEnumerable<ProizvodDto>> GetAllProizvodiAsync(bool trackChanges)
         {
             var proizvodi = await _repository.Proizvod.GetAllProizvodiAsync(trackChanges);
@@ -81,6 +92,18 @@ namespace Service
             var proizvodDto = _mapper.Map<ProizvodDto>(proizvod);
             return proizvodDto;
 
+        }
+
+        public async Task UpdateProizvodAsync(Guid proizvodId, ProizvodForUpdateDto proizvodForUpdate, bool trackChanges)
+        {
+            var proizvod = await _repository.Proizvod.GetProizvodAsync(proizvodId, trackChanges);
+            if(proizvod is null)
+            {
+                throw new ProizvodNotFoundException(proizvodId);
+            }
+
+            _mapper.Map(proizvodForUpdate, proizvod);
+            await _repository.SaveAsync();
         }
     }
 }

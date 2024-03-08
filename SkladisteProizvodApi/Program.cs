@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using NLog;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
+using SkladisteProizvodApi.Presentation.ActionFilters;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
-
+builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.AddControllers()
 .AddApplicationPart(typeof(SkladisteProizvodApi.Presentation.AssemblyReference).Assembly);
 

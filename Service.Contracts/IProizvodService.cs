@@ -15,5 +15,7 @@ namespace Service.Contracts
         Task<IEnumerable<ProizvodDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
         Task<(IEnumerable<ProizvodDto> proizvodi, string ids)> CreateProizvodCollectionAsync
             (IEnumerable<ProizvodForCreationDto> proizvodCollection);
+        Task DeleteProizvodAsync (Guid proizvodId, bool trackChanges);
+        Task UpdateProizvodAsync(Guid proizvodId, ProizvodForUpdateDto proizvodForUpdate, bool trackChanges);
     }
 }

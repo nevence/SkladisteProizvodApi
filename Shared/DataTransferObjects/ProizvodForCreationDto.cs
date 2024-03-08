@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Shared.DataTransferObjects
 {
-    public record ProizvodForCreationDto(String Naziv, String Kategorija, int Cena);
+    public record ProizvodForCreationDto : ProizvodForManipulationDto;
 }

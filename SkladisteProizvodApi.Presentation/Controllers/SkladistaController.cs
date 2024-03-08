@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using SkladisteProizvodApi.Presentation.ActionFilters;
+using SkladisteProizvodApi.Presentation.ModelBinders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,20 +36,20 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return Ok(skladiste);
         }
 
-        [HttpGet("collectiom/({ids})", Name = "SkladistaCollection")]
-        public async Task<IActionResult> GetSkladistaCollection(IEnumerable<Guid> ids)
+        [HttpGet("collection/({ids})", Name = "SkladistaCollection")]
+        public async Task<IActionResult> GetSkladistaCollection([ModelBinder(BinderType =
+            typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
         {
             var skladista = await _service.SkladisteService.GetByIdsAsync(ids, trackChanges: false);
             return Ok(skladista);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSkladiste([FromBody] SkladisteForCreationDto skladiste)
-        {
-            if (skladiste is null)
-                return BadRequest("SkladisteForCreationDto objekat je null");
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
 
-            var createdSkladiste = await _service.SkladisteService.CreateSkladisteAsync(skladiste);
+        public async Task<IActionResult> CreateSkladiste([FromBody] SkladisteForCreationDto skladisteDto)
+        {
+            var createdSkladiste = await _service.SkladisteService.CreateSkladisteAsync(skladisteDto);
 
             return CreatedAtRoute("SkladisteById", new { id = createdSkladiste.Id }, createdSkladiste);
         }
@@ -59,6 +61,21 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return CreatedAtRoute("SkladisteCollection", new {result.ids}, result.skladista);
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteSkladiste(Guid id)
+        {
+            await _service.SkladisteService.DeleteSkladisteAsync(id, trackChanges: false);
+            return NoContent();
+        }
+
+        [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+
+        public async Task<IActionResult> UpdateSkladiste(Guid id, SkladisteForUpdateDto skladisteDto)
+        {
+            await _service.SkladisteService.UpdateSkladisteAsync(id, skladisteDto, trackChanges: true);
+            return NoContent();
+        }
 
     }
 }

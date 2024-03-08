@@ -83,5 +83,28 @@ namespace Service
 
             return(skladista: skladisteCollectionToReturn, ids:ids);
         }
+
+        public async Task DeleteSkladisteAsync(Guid skladisteId, bool trackChanges)
+        {
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges);
+            if(skladiste is null)
+            {
+                throw new SkladisteNotFoundException(skladisteId);
+            }
+
+            _repository.Skladiste.DeleteSkladiste(skladiste);
+            await _repository.SaveAsync();
+        }
+
+        public async Task UpdateSkladisteAsync(Guid skladisteId, SkladisteForUpdateDto skladisteForUpdate, bool trackChanges)
+        {
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges);
+            if(skladiste is null)
+            {
+                throw new SkladisteNotFoundException(skladisteId);
+            }
+            _mapper.Map(skladisteForUpdate, skladiste);
+            await _repository.SaveAsync();  
+        }
     }
 }

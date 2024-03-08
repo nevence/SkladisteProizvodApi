@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using SkladisteProizvodApi.Presentation.ActionFilters;
+using SkladisteProizvodApi.Presentation.ModelBinders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,19 +38,19 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         }
 
         [HttpGet("collection/({ids})", Name = "ProizvodiCollection")]
-        public async Task<IActionResult> GetProizvodiCollection(IEnumerable<Guid> ids)
+        public async Task<IActionResult> GetProizvodiCollection([ModelBinder(BinderType =
+            typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
         {
             var proizvodi = await _service.ProizvodService.GetByIdsAsync(ids, trackChanges: false);
             return Ok(proizvodi);
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
 
-        public async Task<IActionResult> CreateProizvod([FromBody] ProizvodForCreationDto proizvod)
+        public async Task<IActionResult> CreateProizvod([FromBody] ProizvodForCreationDto proizvodDto)
         {
-            if (proizvod is null)
-                return BadRequest("ProizvodForCreationDto objekat je null");
-           var createdProizvod = await _service.ProizvodService.CreateProizvodAsync(proizvod);
+           var createdProizvod = await _service.ProizvodService.CreateProizvodAsync(proizvodDto);
 
             return CreatedAtRoute("ProizvodById", new { id = createdProizvod.Id }, createdProizvod);
         }
@@ -60,6 +62,20 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return CreatedAtRoute("ProizvodiCollection", new { result.ids }, result.proizvodi);
         }
 
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteProizvod(Guid id)
+        {
+            await _service.ProizvodService.DeleteProizvodAsync(id, trackChanges: false);
+            return NoContent();
+        }
+
+        [HttpPut("{id:guid}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> UpdateProizvod(Guid id, [FromBody] ProizvodForUpdateDto proizvodDto)
+        {
+            await _service.ProizvodService.UpdateProizvodAsync(id, proizvodDto, trackChanges: true);
+            return NoContent();
+        }
 
     }
 }

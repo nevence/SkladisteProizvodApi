@@ -19,6 +19,8 @@ namespace Repository
             Create(proizvod);
         }
 
+        public void DeleteProizvod(Proizvod proizvod) => Delete(proizvod);  
+
         public async Task<IEnumerable<Proizvod>> GetAllProizvodiAsync(bool trackChanges)
         {
             return await FindAll(trackChanges).OrderBy(p  => p.Naziv).ToListAsync();
