@@ -5,6 +5,7 @@ using Entities.Models;
 using Repository;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,12 @@ namespace Service
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<SkladisteDto>> GetAllSkladistaAsync(bool trackChanges)
+        public async Task<(IEnumerable<SkladisteDto> skladista, MetaData metaData)> GetAllSkladistaAsync(SkladisteParameters skladisteParameters, bool trackChanges)
         {
 
-            var skladista = await _repository.Skladiste.GetAllSkladistaAsync(trackChanges);
+            var skladista = await _repository.Skladiste.GetAllSkladistaAsync(skladisteParameters, trackChanges);
             var skladistaDto = _mapper.Map<IEnumerable<SkladisteDto>>(skladista);
-            return skladistaDto;
+            return (skladista: skladistaDto, metaData: skladista.MetaData);
         }
 
         public async Task<SkladisteDto> GetSkladistaAsync(Guid skladisteId, bool trackChanges) 

@@ -1,7 +1,9 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,17 @@ namespace Repository
 
         public void DeleteProizvod(Proizvod proizvod) => Delete(proizvod);  
 
-        public async Task<IEnumerable<Proizvod>> GetAllProizvodiAsync(bool trackChanges)
+        public async Task<PagedList<Proizvod>> GetAllProizvodiAsync(ProizvodParameters proizvodParameters, bool trackChanges)
         {
-            return await FindAll(trackChanges).OrderBy(p  => p.Naziv).ToListAsync();
+            var proizvodi = await FindAll(trackChanges)
+                .Search(proizvodParameters.SearchTerm)
+                .OrderBy(p  => p.Naziv)
+                .Skip((proizvodParameters.PageNumber - 1) * proizvodParameters.PageSize)
+                .Take(proizvodParameters.PageSize)
+                .ToListAsync();
+
+            var count = await FindAll(trackChanges).CountAsync();
+            return PagedList<Proizvod>.ToPagedList(proizvodi, count, proizvodParameters.PageNumber, proizvodParameters.PageSize);
         }
 
         public async Task<IEnumerable<Proizvod>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)

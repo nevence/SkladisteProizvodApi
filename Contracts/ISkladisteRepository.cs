@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Contracts
 {
     public interface ISkladisteRepository
     {
-        Task<IEnumerable<Skladiste>> GetAllSkladistaAsync(bool trackChanges);
+        Task<PagedList<Skladiste>> GetAllSkladistaAsync(SkladisteParameters skladisteParameters, bool trackChanges);
         Task<Skladiste> GetSkladisteAsync(Guid Id, bool trackChanges);
         void CreateSkladiste(Skladiste skladiste);
         Task<IEnumerable<Skladiste>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);

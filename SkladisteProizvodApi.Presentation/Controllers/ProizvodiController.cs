@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using SkladisteProizvodApi.Presentation.ActionFilters;
 using SkladisteProizvodApi.Presentation.ModelBinders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SkladisteProizvodApi.Presentation.Controllers
@@ -24,10 +26,11 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProizvodi()
+        public async Task<IActionResult> GetProizvodi([FromQuery] ProizvodParameters proizvodParameters)
         {
-            var proizvodi = await _service.ProizvodService.GetAllProizvodiAsync(trackChanges : false);
-            return Ok(proizvodi);
+            var result = await _service.ProizvodService.GetAllProizvodiAsync(proizvodParameters, trackChanges : false);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+            return Ok(result.proizvodi);
         }
 
         [HttpGet("{id:guid}", Name = "ProizvodById")]

@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,11 +66,11 @@ namespace Service
             await _repository.SaveAsync();   
         }
 
-        public async Task<IEnumerable<ProizvodDto>> GetAllProizvodiAsync(bool trackChanges)
+        public async Task<(IEnumerable<ProizvodDto> proizvodi, MetaData metaData)> GetAllProizvodiAsync(ProizvodParameters proizvodParameters, bool trackChanges)
         {
-            var proizvodi = await _repository.Proizvod.GetAllProizvodiAsync(trackChanges);
+            var proizvodi = await _repository.Proizvod.GetAllProizvodiAsync(proizvodParameters, trackChanges);
             var proizvodiDto = _mapper.Map<IEnumerable<ProizvodDto>>(proizvodi);
-            return proizvodiDto;
+            return (proizvodi: proizvodiDto, metaData:proizvodi.MetaData);
         }
 
         public async Task<IEnumerable<ProizvodDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)

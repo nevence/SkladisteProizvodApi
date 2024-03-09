@@ -2,6 +2,8 @@
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Repository.Extensions;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +18,23 @@ namespace Repository
         {
         }
 
-        public async Task<IEnumerable<Skladiste>> GetAllSkladistaAsync(bool trackChanges) =>
-            await FindAll(trackChanges).OrderBy(s => s.Naziv).ToListAsync();
+        public async Task<PagedList<Skladiste>> GetAllSkladistaAsync(SkladisteParameters skladisteParameters, bool trackChanges)
+        {
+            var skladista =await FindAll(trackChanges)
+                .Search(skladisteParameters.SearchTerm)
+                .OrderBy(s => s.Naziv)
+                .Skip((skladisteParameters.PageNumber - 1) *  skladisteParameters.PageSize)
+                .Take(skladisteParameters.PageSize)
+                .ToListAsync();
+
+            var count = await FindAll(trackChanges).CountAsync();
+
+            return PagedList<Skladiste>.ToPagedList(skladista, count, skladisteParameters.PageNumber, skladisteParameters.PageSize);
+        }
 
         public async Task<Skladiste> GetSkladisteAsync(Guid skladisteId, bool trackChanges) =>
            await FindByCondition(s => s.Id.Equals(skladisteId), trackChanges).SingleOrDefaultAsync();
+
 
         public void CreateSkladiste(Skladiste skladiste) => Create(skladiste);
 

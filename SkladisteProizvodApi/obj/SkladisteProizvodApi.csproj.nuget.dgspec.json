@@ -35,6 +35,9 @@
             "projectReferences": {
               "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Entities\\Entities.csproj": {
                 "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Entities\\Entities.csproj"
+              },
+              "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\neven\\Desktop\\Projekti\\SkladisteProizvodApi\\Shared\\Shared.csproj"
               }
             }
           }

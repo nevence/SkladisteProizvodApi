@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Service.Contracts
 {
     public interface ISkladisteService
     {
-        Task<IEnumerable<SkladisteDto>> GetAllSkladistaAsync(bool trackChanges);
+        Task<(IEnumerable<SkladisteDto> skladista, MetaData metaData)> GetAllSkladistaAsync(SkladisteParameters skladisteParameters, bool trackChanges);
         Task<SkladisteDto> GetSkladistaAsync(Guid skladisteId, bool trackChanges);
         Task<SkladisteDto> CreateSkladisteAsync(SkladisteForCreationDto skladiste);
         Task<IEnumerable<SkladisteDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
