@@ -11,5 +11,6 @@ namespace Service.Contracts
         ISkladisteService SkladisteService { get; }
         IProizvodService ProizvodService { get; }
         ISkladisteProizvodService SkladisteProizvodService {  get; }
+        IAuthenticationService AuthenticationService { get; }
     }
 }

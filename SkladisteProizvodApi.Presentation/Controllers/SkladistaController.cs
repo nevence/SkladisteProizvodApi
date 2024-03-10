@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace SkladisteProizvodApi.Presentation.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SkladistaController : ControllerBase
@@ -25,6 +27,7 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Menadzer")]
         public async Task<IActionResult> GetSkladista([FromQuery] SkladisteParameters skladisteParameters)
         { 
             var result = await _service.SkladisteService.GetAllSkladistaAsync(skladisteParameters, trackChanges: false);

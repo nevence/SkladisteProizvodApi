@@ -16,6 +16,7 @@ namespace SkladisteProizvodApi
             CreateMap<ProizvodForCreationDto, Proizvod>();
             CreateMap<SkladisteForUpdateDto, Skladiste>();
             CreateMap<ProizvodForUpdateDto, Proizvod>();
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }
