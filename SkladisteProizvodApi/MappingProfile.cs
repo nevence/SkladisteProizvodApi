@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity;
 using Shared.DataTransferObjects;
 
 namespace SkladisteProizvodApi
@@ -17,6 +18,10 @@ namespace SkladisteProizvodApi
             CreateMap<SkladisteForUpdateDto, Skladiste>();
             CreateMap<ProizvodForUpdateDto, Proizvod>();
             CreateMap<UserForRegistrationDto, User>();
+            CreateMap<UserForUpdateDto, User>();
+            CreateMap<User, UserDto>();
+
+
         }
     }
 }

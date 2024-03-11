@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using AutoMapper.Configuration;
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -87,7 +90,8 @@ namespace Service
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, _user.UserName)
+                new Claim(ClaimTypes.Name, _user.UserName),
+                new Claim(ClaimTypes.NameIdentifier, _user.Id.ToString()),
             };
 
             var roles = await _userManager.GetRolesAsync(_user);
@@ -114,5 +118,72 @@ namespace Service
 
             return tokenOptions;
         }
+
+        public async Task<IdentityResult> DeleteUser(string userId)
+        {
+            var user = await _userManager.FindByNameAsync(userId);
+            if(user == null)
+            {
+                throw new UserNotFoundException(userId);
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            return result;
+        }
+
+        public async Task<IdentityResult> ChangePassword(string userId, string oldPassword, string newPassword)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if(user == null )
+            {
+                throw new UserNotFoundException(userId);
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+            return result;            
+        }
+
+        public async Task<IdentityResult> UpdateUser(string userId, UserForUpdateDto userForUpdate)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if(user == null)
+            {
+                throw new UserNotFoundException(userId);
+            }
+            
+            _mapper.Map(userForUpdate, user);
+            var result = await _userManager.UpdateAsync(user);
+            return result;
+        }
+
+        public async Task<(IEnumerable<UserDto> users, MetaData metaData)> GetUsers(UserParameters userParameters)
+        {
+            var users = await GetUsersAsync(userParameters);
+            var usersDto = new List<UserDto>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                var userDto = _mapper.Map<UserDto>(user);
+                userDto.Roles = roles.ToList(); 
+                usersDto.Add(userDto); 
+            }
+
+            return (users: usersDto, metaData: users.MetaData);
+        }
+
+
+        private async Task<PagedList<User>> GetUsersAsync(UserParameters userParameters)
+        {
+            var users = _userManager.Users
+                .OrderBy(u => u.Ime)
+                .Skip((userParameters.PageNumber - 1) * userParameters.PageSize)
+                .Take(userParameters.PageSize)
+                .ToList();
+
+            var count = _userManager.Users.Count();
+            return PagedList<User>.ToPagedList(users, count, userParameters.PageNumber, userParameters.PageSize);
+        }
+
     }
 }
