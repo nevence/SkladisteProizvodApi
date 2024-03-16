@@ -20,6 +20,14 @@ namespace SkladisteProizvodApi
             CreateMap<UserForRegistrationDto, User>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<User, UserDto>();
+            CreateMap<SkladisteProizvod, SkladisteProizvodDto>()
+                .IncludeMembers(sp => sp.Proizvod)
+                .ForMember(dto => dto.Kolicina, opt => opt.MapFrom(sp => sp.Kolicina))
+                .ForMember(dto => dto.Naziv, opt => opt.MapFrom(sp => sp.Proizvod.Naziv))
+                .ForMember(dto => dto.Kategorija, opt => opt.MapFrom(sp => sp.Proizvod.Kategorija))
+                .ForMember(dto => dto.Cena, opt => opt.MapFrom(sp => sp.Proizvod.Cena))
+                .ForMember(dto => dto.ImageURL, opt => opt.MapFrom(sp => sp.Proizvod.ImageURL));
+               
 
 
         }

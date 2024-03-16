@@ -54,7 +54,8 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             return Ok(new
             {
                 Token = await _service.AuthenticationService.CreateToken()
-            });
+            });
+
 
         }
 
@@ -88,6 +89,13 @@ namespace SkladisteProizvodApi.Presentation.Controllers
             var result = await _service.AuthenticationService.GetUsers(userParameters);
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
             return Ok(result.users);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] String userId)
+        {
+            var result = await _service.AuthenticationService.DeleteUser(userId);   
+            return NoContent();
         }
 
     }
