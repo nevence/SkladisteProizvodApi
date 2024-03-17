@@ -20,14 +20,27 @@ namespace SkladisteProizvodApi
             CreateMap<UserForRegistrationDto, User>();
             CreateMap<UserForUpdateDto, User>();
             CreateMap<User, UserDto>();
+            CreateMap<Proizvod, SkladisteProizvodDto>()
+                .ForMember(dest => dest.Naziv, opt => opt.MapFrom(src => src.Naziv))
+                .ForMember(dest => dest.Kategorija, opt => opt.MapFrom(src => src.Kategorija))
+                .ForMember(dest => dest.Cena, opt => opt.MapFrom(src => src.Cena))
+                .ForMember(dest => dest.ImageURL, opt => opt.MapFrom(src => src.ImageURL));
             CreateMap<SkladisteProizvod, SkladisteProizvodDto>()
-                .IncludeMembers(sp => sp.Proizvod)
-                .ForMember(dto => dto.Kolicina, opt => opt.MapFrom(sp => sp.Kolicina))
-                .ForMember(dto => dto.Naziv, opt => opt.MapFrom(sp => sp.Proizvod.Naziv))
-                .ForMember(dto => dto.Kategorija, opt => opt.MapFrom(sp => sp.Proizvod.Kategorija))
-                .ForMember(dto => dto.Cena, opt => opt.MapFrom(sp => sp.Proizvod.Cena))
-                .ForMember(dto => dto.ImageURL, opt => opt.MapFrom(sp => sp.Proizvod.ImageURL));
-               
+                 .ForMember(dto => dto.Id, opt => opt.MapFrom(sp => sp.ProizvodId))
+                 .ForMember(dto => dto.Kolicina, opt => opt.MapFrom(sp => sp.Kolicina))
+                 .ForMember(dto => dto.Naziv, opt => opt.MapFrom(sp => sp.Proizvod.Naziv))
+                 .ForMember(dto => dto.Kategorija, opt => opt.MapFrom(sp => sp.Proizvod.Kategorija))
+                 .ForMember(dto => dto.Cena, opt => opt.MapFrom(sp => sp.Proizvod.Cena))
+                 .ForMember(dto => dto.ImageURL, opt => opt.MapFrom(sp => sp.Proizvod.ImageURL));
+
+            CreateMap<SkladisteProizvodForCreationDto, SkladisteProizvod>()
+                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom(src => 0));
+
+            CreateMap<SkladisteProizvodForDeliveryDto, SkladisteProizvod>()
+                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom((src, dest) =>  src.Kolicina - dest.Kolicina));
+
+            CreateMap<SkladisteProizvodForOrderDto, SkladisteProizvod>()
+                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom((src, dest) => src.Kolicina + dest.Kolicina));
 
 
         }

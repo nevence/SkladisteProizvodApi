@@ -12,5 +12,9 @@ namespace Service.Contracts
     {
         Task<(IEnumerable<SkladisteProizvodDto> skladisteProizvodi, MetaData metaData)> GetAllProizvodiAsync(SkladisteProizvodParameters proizvodParameters, Guid skladisteId, bool trackChanges);
         Task<SkladisteProizvodDto> GetProizvodAsync(Guid proizvodId, Guid skladisteId, bool trackChanges);
+        Task<SkladisteProizvodDto> AddProizvodAsync(SkladisteProizvodForCreationDto skladisteProizvod);
+        Task OrderProizvodAsync(SkladisteProizvodForOrderDto skladisteProizvod, bool trackChanges);
+        Task DeliverProizvodAsync(SkladisteProizvodForDeliveryDto skladisteProizvod, bool trackChanges);
+        Task RemoveProizvodAsync(Guid proizvodId, Guid skladisteId, bool trackChanges);
     }
 }

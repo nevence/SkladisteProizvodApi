@@ -6,5 +6,13 @@ using System.Threading.Tasks;
 
 namespace Shared.DataTransferObjects
 {
-    public record SkladisteProizvodDto(Guid Id, string Naziv, string Kategorija, int Cena, string ImageURL, int Kolicina);
+    public record SkladisteProizvodDto
+    {
+        public Guid Id { get; init; }
+        public string Naziv { get; init; }
+        public string Kategorija { get; init; }
+        public int Cena { get; init; }
+        public string ImageURL { get; init; }
+        public int Kolicina { get; init; }
+    }
 }
