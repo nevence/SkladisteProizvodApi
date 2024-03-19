@@ -68,7 +68,6 @@ namespace Service
         public async Task<(IEnumerable<SkladisteProizvodDto> skladisteProizvodi, MetaData metaData)> GetAllProizvodiAsync(SkladisteProizvodParameters proizvodParameters, Guid skladisteId, bool trackChanges)
         {
             var proizvodi = await _repository.SkladisteProizvod.GetAllProizvodiAsync(proizvodParameters, skladisteId, trackChanges);
-            //var proizvodiDto = _mapper.Map<IEnumerable<SkladisteProizvodDto>>(proizvodi);
             var proizvodiDto = new List<SkladisteProizvodDto>();
             foreach (var item in proizvodi)
             {
@@ -86,6 +85,8 @@ namespace Service
             {
                 throw new ProizvodNotFoundException(proizvodId);
             }
+            Console.WriteLine($"Id: {proizvod.Id}, ProizvodId: {proizvod.ProizvodId}, SkladisteId: {proizvod.SkladisteId}, Kolicina: {proizvod.Kolicina}");
+
             var proizvodDto = _mapper.Map<SkladisteProizvodDto>(proizvod);
             return proizvodDto;
         }

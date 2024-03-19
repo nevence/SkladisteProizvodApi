@@ -43,7 +43,9 @@ namespace Repository
         }
         public async Task<SkladisteProizvod> GetProizvodAsync(Guid proizvodId, Guid skladisteId, bool trackChanges)
         {
-            return await FindByCondition(s => s.SkladisteId.Equals(skladisteId) && s.ProizvodId.Equals(proizvodId), trackChanges).SingleOrDefaultAsync();
+            return await FindByCondition(s => s.SkladisteId.Equals(skladisteId) && s.ProizvodId.Equals(proizvodId), trackChanges)
+                 .Include(s => s.Proizvod)
+                 .SingleOrDefaultAsync();
 
         }
     }
