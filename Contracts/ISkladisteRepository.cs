@@ -15,6 +15,8 @@ namespace Contracts
         void CreateSkladiste(Skladiste skladiste);
         Task<IEnumerable<Skladiste>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
         void DeleteSkladiste(Skladiste skladiste);
-        
+        public void Update(Skladiste skladiste);
+
+
     }
 }

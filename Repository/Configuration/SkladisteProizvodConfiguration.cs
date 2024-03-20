@@ -13,15 +13,23 @@ namespace Repository.Configuration
     {
         public void Configure(EntityTypeBuilder<SkladisteProizvod> builder)
         {
+            builder.HasOne(sp => sp.Proizvod)
+                .WithMany()
+                .HasForeignKey(sp => sp.ProizvodId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(sp=> sp.Skladiste) .WithMany()
+                .HasForeignKey(sp => sp.SkladisteId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasData(
                 new SkladisteProizvod
-                { 
-                    Id = new Guid(Guid.NewGuid().ToString()),   
+                {
+                    Id = Guid.NewGuid(),
                     SkladisteId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
                     ProizvodId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                     Kolicina = 50
-                }
-                ); 
+                });
         }
     }
 }

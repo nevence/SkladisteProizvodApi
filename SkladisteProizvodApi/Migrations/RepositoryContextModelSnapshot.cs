@@ -143,7 +143,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ba1d9fed-07c2-4d21-9a88-a71476eca269"),
+                            Id = new Guid("da7911da-b2da-4a32-aa96-dfa644aa713c"),
                             Kolicina = 50,
                             ProizvodId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                             SkladisteId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a")
@@ -250,19 +250,19 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b2aac1bc-c6fe-4c13-b8f4-60c3284710f3",
+                            Id = "27c707ef-e8db-4fec-8fc3-5facb049dfc5",
                             Name = "Zaposleni",
                             NormalizedName = "ZAPOSLENI"
                         },
                         new
                         {
-                            Id = "801fe11e-126e-4161-af04-0d1544dab45b",
+                            Id = "a90d6d36-843f-43b6-a26c-42606e9e61ed",
                             Name = "Menadzer",
                             NormalizedName = "MENADZER"
                         },
                         new
                         {
-                            Id = "32ea7282-165a-43df-b160-1ff8f2df2161",
+                            Id = "c716ea26-261b-4085-8bbb-9695ea666d83",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -379,13 +379,13 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Entities.Models.Proizvod", "Proizvod")
                         .WithMany()
                         .HasForeignKey("ProizvodId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.Models.Skladiste", "Skladiste")
                         .WithMany()
                         .HasForeignKey("SkladisteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Proizvod");

@@ -45,5 +45,7 @@ namespace Repository
 
         public void DeleteSkladiste(Skladiste skladiste) => Delete(skladiste);  
        
+
+        public void Update(Skladiste skladiste) => Update(skladiste);
     }
 }

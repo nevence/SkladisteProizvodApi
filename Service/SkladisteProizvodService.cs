@@ -48,7 +48,7 @@ namespace Service
             {
                 throw new ProizvodNotFoundException(skladisteProizvod.ProizvodId);
             }
-            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteProizvod.SkladisteId, trackChanges: false);
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteProizvod.SkladisteId, trackChanges);
             if (skladiste is null)
             {
                 throw new SkladisteNotFoundException(skladisteProizvod.SkladisteId);
@@ -58,8 +58,8 @@ namespace Service
                 throw new KolicinaBadRequestException(skladisteProizvod.Kolicina);
             }
 
-            _mapper.Map(skladisteProizvod, proizvod);
-            await SubtractPopunjenoAsync(skladisteProizvod.SkladisteId, skladisteProizvod.Kolicina);
+            proizvod.Kolicina -= skladisteProizvod.Kolicina;
+            skladiste.Popunjeno -= skladisteProizvod.Kolicina;
             await _repository.SaveAsync();
 
 
@@ -98,7 +98,7 @@ namespace Service
             {
                 throw new ProizvodNotFoundException(skladisteProizvod.ProizvodId);
             }
-            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteProizvod.SkladisteId, trackChanges: false);
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteProizvod.SkladisteId, trackChanges);
             if (skladiste is null)
             {
                 throw new SkladisteNotFoundException(skladisteProizvod.SkladisteId);
@@ -108,8 +108,8 @@ namespace Service
                 throw new KolicinaBadRequestException(skladisteProizvod.Kolicina);
             }
 
-            _mapper.Map(skladisteProizvod, proizvod);
-            await AddPopunjenoAsync(skladisteProizvod.SkladisteId, skladisteProizvod.Kolicina);
+            proizvod.Kolicina += skladisteProizvod.Kolicina;
+            skladiste.Popunjeno += skladisteProizvod.Kolicina;
             await _repository.SaveAsync();
         }
 
@@ -128,13 +128,13 @@ namespace Service
 
         public async Task AddPopunjenoAsync(Guid skladisteId, int Kolicina)
         {
-            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges: false);
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges: true);
             skladiste.Popunjeno += Kolicina;
         }
-
+        
         public async Task SubtractPopunjenoAsync(Guid skladisteId, int Kolicina)
         {
-            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges: false);
+            var skladiste = await _repository.Skladiste.GetSkladisteAsync(skladisteId, trackChanges: true);
             skladiste.Popunjeno -= Kolicina;
         }
     }

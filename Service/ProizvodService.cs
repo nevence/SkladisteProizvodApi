@@ -98,7 +98,7 @@ namespace Service
         public async Task UpdateProizvodAsync(Guid proizvodId, ProizvodForUpdateDto proizvodForUpdate, bool trackChanges)
         {
             var proizvod = await _repository.Proizvod.GetProizvodAsync(proizvodId, trackChanges);
-            if(proizvod is null)
+            if (proizvod is null)
             {
                 throw new ProizvodNotFoundException(proizvodId);
             }

@@ -45,7 +45,7 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         public async Task<IActionResult> AddProizvod([FromBody] SkladisteProizvodForCreationDto skladisteProizvodDto, [FromRoute] Guid id)
         {
             var proizvod = await _service.SkladisteProizvodService.AddProizvodAsync(skladisteProizvodDto);
-            return CreatedAtRoute("SkladisteProizvodById", new { id = id, proizvodId = proizvod.Id }, proizvod);
+            return RedirectToRoute("SkladisteProizvodById", new { id, proizvod.Id });
         }
 
 
@@ -54,7 +54,7 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         public async Task<IActionResult> OrderProizvod(SkladisteProizvodForOrderDto skladisteProizvodDto, [FromRoute] Guid id, Guid proizvodId)
         {
             await _service.SkladisteProizvodService.OrderProizvodAsync(skladisteProizvodDto, trackChanges: true);
-            return RedirectToAction("SkladisteProizvodById", new { id = id, proizvodId = proizvodId });
+            return RedirectToRoute("SkladisteProizvodById", new { id, proizvodId });
         }
 
 
@@ -63,10 +63,10 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         public async Task<IActionResult> DeliverProizvod(SkladisteProizvodForOrderDto skladisteProizvodDto, [FromRoute] Guid id, Guid proizvodId)
         {
             await _service.SkladisteProizvodService.DeliverProizvodAsync(skladisteProizvodDto, trackChanges: true);
-            return RedirectToAction("SkladisteProizvodById", new { id, proizvodId });
+            return RedirectToRoute("SkladisteProizvodById", new { id, proizvodId });
         }
 
-        [HttpDelete("{id}/proizvodId")]
+        [HttpDelete("Delete/{id}/{proizvodId}")]
         public async Task<IActionResult> RemoveProizvod([FromRoute] Guid id, Guid proizvodId)
         {
             await _service.SkladisteProizvodService.RemoveProizvodAsync(proizvodId, id, trackChanges: false);

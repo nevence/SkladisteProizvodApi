@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SkladisteProizvodApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41773d1bfabf40e6618c6c90629eef141b5defe2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+334913d594cf5d05a6f91e4e04591eb3443311e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("SkladisteProizvodApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SkladisteProizvodApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

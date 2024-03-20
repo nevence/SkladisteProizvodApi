@@ -37,10 +37,11 @@ namespace SkladisteProizvodApi
                 .ForMember(dest => dest.Kolicina, opt => opt.MapFrom(src => 0));
 
             CreateMap<SkladisteProizvodForDeliveryDto, SkladisteProizvod>()
-                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom((src, dest) =>  src.Kolicina - dest.Kolicina));
+     .ForMember(dest => dest.Kolicina,
+                opt => opt.MapFrom(src => src.Kolicina > src.Kolicina ? 0 : src.Kolicina - src.Kolicina));
 
             CreateMap<SkladisteProizvodForOrderDto, SkladisteProizvod>()
-                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom((src, dest) => src.Kolicina + dest.Kolicina));
+                .ForMember(dest => dest.Kolicina, opt => opt.MapFrom((src, dest) => dest.Kolicina + src.Kolicina));
 
 
         }
