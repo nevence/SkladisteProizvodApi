@@ -62,6 +62,10 @@ namespace Service
             {
                 throw new ProizvodNotFoundException(proizvodId);
             }
+            if(_repository.Proizvod.ExistReferencingEntities(proizvod))
+            {
+                throw new ForeignKeyConstraintBadRequestException(proizvod.Id);
+            }
             _repository.Proizvod.DeleteProizvod(proizvod);
             await _repository.SaveAsync();   
         }

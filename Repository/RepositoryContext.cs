@@ -24,6 +24,12 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new ProizvodConfiguration());
             modelBuilder.ApplyConfiguration(new SkladisteProizvodConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e=> e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
 
         public DbSet<Skladiste> Skladista { get; set; }

@@ -14,8 +14,11 @@ namespace Repository
 {
     public class SkladisteRepository : RepositoryBase<Skladiste>, ISkladisteRepository
     {
+        private readonly RepositoryContext _repositoryContext;
+
         public SkladisteRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
+            _repositoryContext = repositoryContext;
         }
 
         public async Task<PagedList<Skladiste>> GetAllSkladistaAsync(SkladisteParameters skladisteParameters, bool trackChanges)
@@ -47,5 +50,12 @@ namespace Repository
        
 
         public void Update(Skladiste skladiste) => Update(skladiste);
+
+        public bool ExistReferencingEntities(Skladiste skladiste)
+        {
+            bool existReferencingEntities = _repositoryContext.SkladisteProizvodi.Any(e => e.SkladisteId == skladiste.Id);
+
+            return existReferencingEntities;
+        }
     }
 }

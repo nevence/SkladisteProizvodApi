@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+334913d594cf5d05a6f91e4e04591eb3443311e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d2c79c6525cffa2f34ea570c5414a20eccd7886")]
 [assembly: System.Reflection.AssemblyProductAttribute("Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

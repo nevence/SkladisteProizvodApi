@@ -14,7 +14,12 @@ namespace Repository
 {
     public class ProizvodRepository : RepositoryBase<Proizvod>, IProizvodRepository
     {
-        public ProizvodRepository(RepositoryContext repositoryContext) : base(repositoryContext) { }
+        private readonly RepositoryContext _repositoryContext;
+
+        public ProizvodRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+        {
+            _repositoryContext = repositoryContext;
+        }
 
         public void CreateProizvod(Proizvod proizvod)
         {
@@ -44,6 +49,13 @@ namespace Repository
         public async Task<Proizvod> GetProizvodAsync(Guid Id, bool trackChanges)
         {
             return await FindByCondition(p => p.Id.Equals(Id), trackChanges).SingleOrDefaultAsync();
+        }
+
+        public bool ExistReferencingEntities(Proizvod proizvod)
+        {
+            bool existReferencingEntities = _repositoryContext.SkladisteProizvodi.Any(e => e.ProizvodId == proizvod.Id);
+
+            return existReferencingEntities;
         }
     }
 }

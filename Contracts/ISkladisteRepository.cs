@@ -16,6 +16,7 @@ namespace Contracts
         Task<IEnumerable<Skladiste>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
         void DeleteSkladiste(Skladiste skladiste);
         public void Update(Skladiste skladiste);
+        bool ExistReferencingEntities(Skladiste skladiste);
 
 
     }

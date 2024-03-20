@@ -15,5 +15,6 @@ namespace Contracts
         void CreateProizvod(Proizvod proizvod);
         Task<IEnumerable<Proizvod>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
         void DeleteProizvod(Proizvod proizvod);
+        bool ExistReferencingEntities(Proizvod proizvod);
     }
 }

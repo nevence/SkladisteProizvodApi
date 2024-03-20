@@ -12,16 +12,7 @@ namespace Repository.Configuration
     public class SkladisteProizvodConfiguration : IEntityTypeConfiguration<SkladisteProizvod>
     {
         public void Configure(EntityTypeBuilder<SkladisteProizvod> builder)
-        {
-            builder.HasOne(sp => sp.Proizvod)
-                .WithMany()
-                .HasForeignKey(sp => sp.ProizvodId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(sp=> sp.Skladiste) .WithMany()
-                .HasForeignKey(sp => sp.SkladisteId)
-                .OnDelete(DeleteBehavior.Restrict);
-
+        { 
             builder.HasData(
                 new SkladisteProizvod
                 {

@@ -93,6 +93,11 @@ namespace Service
                 throw new SkladisteNotFoundException(skladisteId);
             }
 
+            if(_repository.Skladiste.ExistReferencingEntities(skladiste))
+            {
+                throw new ForeignKeyConstraintBadRequestException(skladiste.Id);
+            }
+
             _repository.Skladiste.DeleteSkladiste(skladiste);
             await _repository.SaveAsync();
         }

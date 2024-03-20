@@ -143,7 +143,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("da7911da-b2da-4a32-aa96-dfa644aa713c"),
+                            Id = new Guid("afaaee61-8677-4950-804b-f6feed73a7ae"),
                             Kolicina = 50,
                             ProizvodId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                             SkladisteId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a")
@@ -250,19 +250,19 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "27c707ef-e8db-4fec-8fc3-5facb049dfc5",
+                            Id = "e3950121-74b1-4b17-9c11-8417a7632c37",
                             Name = "Zaposleni",
                             NormalizedName = "ZAPOSLENI"
                         },
                         new
                         {
-                            Id = "a90d6d36-843f-43b6-a26c-42606e9e61ed",
+                            Id = "d0fe6a28-a826-4632-8eef-00adba87b103",
                             Name = "Menadzer",
                             NormalizedName = "MENADZER"
                         },
                         new
                         {
-                            Id = "c716ea26-261b-4085-8bbb-9695ea666d83",
+                            Id = "e5687b0b-28da-48e1-a784-6b419dd3af2f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -398,7 +398,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -407,7 +407,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Entities.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -416,7 +416,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Entities.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -425,13 +425,13 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -440,7 +440,7 @@ namespace SkladisteProizvodApi.Migrations
                     b.HasOne("Entities.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -45,7 +45,7 @@ namespace SkladisteProizvodApi.Presentation.Controllers
         public async Task<IActionResult> AddProizvod([FromBody] SkladisteProizvodForCreationDto skladisteProizvodDto, [FromRoute] Guid id)
         {
             var proizvod = await _service.SkladisteProizvodService.AddProizvodAsync(skladisteProizvodDto);
-            return RedirectToRoute("SkladisteProizvodById", new { id, proizvod.Id });
+            return RedirectToRoute("SkladisteProizvodById", new { id = id, proizvodId = proizvod.Id });
         }
 
 
